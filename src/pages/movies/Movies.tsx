@@ -4,48 +4,43 @@ import React from "react";
 import { Pagination } from "antd";
 import { useGenre } from "@/api/hooks/useGenre";
 import Genre from "@/components/genre/Genre";
-import { useSearchParams } from "react-router-dom";
+import { useParamsHook } from "@/hooks/useParamsHook";
 
 const Movies = () => {
   const { getMovies } = useMovie();
   const { getGenres } = useGenre();
+  const { getParam, setParam } = useParamsHook();
 
-  const [params, setParams] = useSearchParams();
+  const genre = getParam("genre");
 
-  const page = parseInt(params.get("page") || "1", 10);
-  const pageSize = parseInt(params.get("pageSize") || "20", 10);
+  const page = Number(getParam("page")) || 1;
+
+  const handlePagination = (value: number) => {
+    setParam("page", value.toString());
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   const { data: genreData } = getGenres();
-  const { data } = getMovies({ page, without_genres: "18,36,27,10749",});
-
-
-  const handleChangePage = (newPage: number, newPageSize: number) => {
-    const updatedParams = new URLSearchParams(params.toString());
-
-    if (newPageSize !== pageSize) {
-      updatedParams.set("pageSize", newPageSize.toString());
-      updatedParams.set("page", "1");
-    } else {
-      updatedParams.set("page", newPage.toString());
-    }
-
-    setParams(updatedParams);
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+  const { data } = getMovies({
+    page,
+    with_genres: genre,
+    without_genres: "18,36,27,10749",
+    // "release_date.gte": "01-01-1800",
+    // "release_date.lte": "01-01-1890",
+  });
 
   return (
     <div>
       <Genre data={genreData?.genres} />
-          <MovieView data={data?.results} />
-          <div className="grid place-items-center mt-8 mb-8">
-            <Pagination
-              current={page}
-              pageSize={pageSize}
-              total={100}
-              onChange={handleChangePage}
-              showSizeChanger
-            />
-          </div>
+      <MovieView data={data?.results} />
+      <div className="flex justify-center items-center mt-8 mb-8">
+        <Pagination
+          current={page}
+          onChange={handlePagination}
+          pageSize={20}
+          total={data?.total_results <= 10_000 ? data?.total_results : 10_000}
+        />
+      </div>
     </div>
   );
 };
