@@ -3,12 +3,11 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
 import type { Swiper as SwiperClass } from 'swiper';
 
-
-
 import { useMovie } from '@/api/hooks/useMovie';
 import { IMAGE_URL } from '@/const';
 import { PlayCircleFilled } from '@ant-design/icons';
 import type { IMovie } from '@/types';
+import './style.css'
 
 
 
@@ -49,9 +48,9 @@ const Hero: FC = () => {
         modules={[FreeMode, Navigation, Thumbs]}
         className="mySwiper mt-4 mb-20"
         >
-        {movieData?.results?.slice(0, 5).map((movie: IMovie) => (
+        {movieData?.results?.slice(0, 4).map((movie: IMovie) => (
           <SwiperSlide key={movie.id}>
-            <img src={IMAGE_URL + movie.poster_path} alt={movie.title} className="w-full h-40 object-cover"/>
+            <img src={IMAGE_URL + movie.backdrop_path} alt={movie.title} className="w-full  object-contain"/>
           </SwiperSlide>
         ))}
       </Swiper>

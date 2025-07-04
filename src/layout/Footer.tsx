@@ -1,7 +1,9 @@
 import photo from '@/assets/vite.svg'
-import photo2 from '@/assets/goglePlay.png'
-import photo3 from '@/assets/AppStore.png'
+import photo2 from '@/assets/icon-google-play.svg'
+import photo3 from '@/assets/icon-app-store.svg'
+// import { FaApple, FaGooglePlay } from "react-icons/fa";
 import { AudioOutlined, FileTextOutlined, PhoneOutlined, PlayCircleOutlined, QuestionCircleOutlined, SmileOutlined, StarOutlined, TrophyOutlined } from '@ant-design/icons'
+import React from 'react'
 const Footer = () => {
   return (
     <footer className="container mx-auto dark:bg-[#111111] bg-white dark:text-white py-20 px-4">
@@ -43,4 +45,4 @@ const Footer = () => {
   )
 }
 
-export default Footer
+export default React.memo(Footer)

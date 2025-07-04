@@ -8,7 +8,7 @@ import {
   SunOutlined,
   VideoCameraOutlined,
 } from "@ant-design/icons";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const Header = () => {
   const [isDark, setIsDark] = useState(false);
@@ -28,7 +28,7 @@ const Header = () => {
   };
 
   return (
-    <div className="container mx-auto flex flex-col sm:flex-row sm:justify-between sm:items-center pt-4 mb-12 gap-4 sm:gap-0">
+    <div className="container mx-auto flex flex-col sm:flex-row sm:justify-between sm:items-center pt-4 mb-9 gap-4 sm:gap-0">
       <div className="flex justify-center sm:justify-start">
         <img onClick={() => navigate("/")} src={photo} alt="logo" className="w-28" />
       </div>
@@ -50,11 +50,14 @@ const Header = () => {
           <NavLink to="/search">Search</NavLink>
         </div>
       </div>
-      <div className="flex justify-center sm:justify-end">
+      <div className="flex justify-center sm:justify-end gap-4">
         <button onClick={handleTheme} className="text-xl">{isDark ? <SunOutlined /> : <MoonOutlined />}</button>
+        <button className='bg-[#C61F1F] w-32 h-12 px-3 py-1 rounded-xl'>
+            <span className="dark:text-white text-black">Sign in</span>
+        </button>
       </div>
     </div>
   );
 };
 
-export default Header;
+export default React.memo(Header);

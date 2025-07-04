@@ -1,10 +1,11 @@
-import { Suspense } from "react";
 import MainRouter from "./pages";
+import { Suspense } from "./utils";
 
 const App = () => {
+
   return (
     <div className="dark:bg-black dark:text-white  bg-slate-100">
-      <Suspense fallback={<p className="grid place-items-center">Loading...</p>}>
+      <Suspense>
         <MainRouter />
       </Suspense>
     </div>

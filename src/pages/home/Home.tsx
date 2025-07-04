@@ -8,7 +8,6 @@ const Home = () => {
   const {data} = getMovies({page: 1, without_genres: "18,36,27,10749"})
   return (
     <div className='container mx-auto'>
-      {/* <Carousel/> */}
       <Hero/>
       <MovieView data={data?.results?.slice(0, 8)}/>
     </div>

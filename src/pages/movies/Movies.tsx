@@ -33,7 +33,7 @@ const Movies = () => {
     <div>
       <Genre data={genreData?.genres} />
       <MovieView data={data?.results} />
-      <div className="flex justify-center items-center mt-8 mb-8">
+      <div className="flex bg-white w-[400px] mx-auto justify-center items-center mt-8 mb-8">
         <Pagination
           current={page}
           onChange={handlePagination}
