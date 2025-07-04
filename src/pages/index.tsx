@@ -6,6 +6,7 @@ const Home = lazy(() => import("./home/Home"));
 const Movies = lazy(() => import("./movies/Movies"));
 const Search = lazy(() => import("./search/Search"));
 const Saved = lazy(() => import("./saved/saved"));
+const Register = lazy(() => import("./register/Register"));
 const MoviesDetail = lazy(() => import("./movies-detail/MoviesDetail"));
 const PersonDetail = lazy(() => import("./person-detail/PersonDetail"));
 
@@ -38,6 +39,10 @@ const MainRouter = () => {
         {
           path: "/person/:id",
           element: <PersonDetail />,
+        },
+        {
+          path: "/register",
+          element: <Register />,
         }
       ],
     },

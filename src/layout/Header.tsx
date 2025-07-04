@@ -51,8 +51,8 @@ const Header = () => {
         </div>
       </div>
       <div className="flex justify-center sm:justify-end gap-4">
-        <button onClick={handleTheme} className="text-xl">{isDark ? <SunOutlined /> : <MoonOutlined />}</button>
-        <button className='bg-[#C61F1F] w-32 h-12 px-3 py-1 rounded-xl'>
+        <button onClick={handleTheme} className="text-xl bg-white dark:bg-slate-900 rounded-[14px] py-2 px-3">{isDark ? <SunOutlined /> : <MoonOutlined />}</button>
+        <button onClick={()=> navigate("/register")} className='bg-[#C61F1F] w-32 h-12 px-3 py-1 rounded-xl'>
             <span className="dark:text-white text-black">Sign in</span>
         </button>
       </div>
