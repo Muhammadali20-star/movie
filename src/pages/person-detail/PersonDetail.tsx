@@ -1,20 +1,13 @@
 import React from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useMovie } from "@/api/hooks/useMovie";
 import { IMAGE_URL } from "@/const";
-import { Image } from "antd";
 import MovieView from "@/components/movie-view/MovieView";
 
-interface ICastMovie {
-  id: number;
-  title: string;
-  poster_path: string | null;
-  release_date: string;
-}
+
 
 const PersonDetail = () => {
   const { id } = useParams();
-  const navigate = useNavigate();
 
   const { getPersonDetail, getPersonDetailPath } = useMovie();
 
