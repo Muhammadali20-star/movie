@@ -18,23 +18,19 @@ const Genre: FC<Props> = ({ data }) => {
     }
   }
   return (
-    <div className="container mx-auto flex overflow-x-auto gap-3 py-3 px-2 scrollbar-hide">
-    {data?.map((item: IGenre) => (
-      <div
-        key={item.id}
-        onClick={() => handleGenre(item.id)}
-        className={`whitespace-nowrap cursor-pointer select-none px-4 py-2 text-sm font-medium rounded-full border shadow-sm
-          ${
-            item.id.toString() === genre
-              ? "bg-blue-600 text-white border-blue-600 shadow"
-              : "bg-gray-100 text-gray-800 border-gray-300 dark:bg-[#2a2a2a] dark:text-white dark:border-gray-600"
+  <div className="container mx-auto flex overflow-x-auto gap-3 py-3 px-2">
+      {data?.map((item: IGenre) => (
+        <div
+          onClick={() => handleGenre(item.id)}
+          className={`text-nowrap cursor-pointer select-none px-4 py-2 bg-gray-200 text-sm font-medium rounded-xl ${
+            item.id.toString() === genre ? "dark:bg-red-500 bg-red-500 text-white" : "bg-gray-100 text-gray-800 dark:bg-[#2a2a2a] dark:text-white"
           }`}
-      >
-        {item.name}
-      </div>
-    ))}
-  </div>
-  
+          key={item.id}
+        >
+          {item.name}
+        </div>
+      ))}
+    </div>
   );
 };
 
