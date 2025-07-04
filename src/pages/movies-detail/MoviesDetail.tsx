@@ -54,8 +54,7 @@ const MovieDetail = () => {
           <div className="mb-16">
             <h2 className="text-2xl font-semibold mb-4 border-l-4 border-blue-500 pl-3">Актеры</h2>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
-              {creditsData.cast
-                .filter((person: ICastMember) => person.profile_path).slice(0, 15).map((person: ICastMember) => (
+              {creditsData.cast.slice(0, 15).map((person: ICastMember) => (
                   <div key={person.id} className="bg-white dark:bg-[#1a1a1a] object-contain rounded-xl">
                     <img src={IMAGE_URL + person.profile_path} onClick={()=> navigate(`/person/${person.id}`)} alt={person.original_name} loading="lazy" className="w-full h-48 object-cover"/>
                     <div className="p-3 text-center">
