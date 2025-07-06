@@ -12,9 +12,9 @@ const PersonDetail = () => {
   const { getPersonDetail, getPersonDetailPath } = useMovie();
 
   const { data: person } = getPersonDetail(id || "");
-  const { data: combinedCredits } = getPersonDetailPath(id || "", "combined_credits");
+  const { data,isLoading } = getPersonDetailPath(id || "", "combined_credits");
 
-  console.log(combinedCredits);
+  console.log(data);
   
 
   return (
@@ -41,7 +41,7 @@ const PersonDetail = () => {
                 )}
             </div>
             </div>
-          <MovieView data={combinedCredits?.cast?.slice(0, 8)} />
+          <MovieView data={data?.cast?.slice(0, 8)} loading={isLoading} count={8} />
         </>
       )}
     </div>

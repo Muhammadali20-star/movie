@@ -18,7 +18,7 @@ const MovieDetail = () => {
   const { getMovieSingle, getMovieDetail } = useMovie();
   const navigate = useNavigate()
 
-  const { data } = getMovieSingle(id || "");
+  const { data, isLoading } = getMovieSingle(id || "");
   const { data: similarData } = getMovieDetail(id || "", "similar");
   const { data: imagesData } = getMovieDetail(id || "", "images");
   const { data: creditsData } = getMovieDetail(id || "", "credits");
@@ -42,7 +42,7 @@ const MovieDetail = () => {
         <div className="mb-16">
           <h2 className="text-2xl font-semibold mb-4 border-l-4 border-red-500 pl-3">Кадры из фильма</h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-            {imagesData.backdrops.slice(0, 12).map((item: any, index: number) => (
+            {imagesData.backdrops.slice(0, 4).map((item: any, index: number) => (
               <div key={index} className="rounded-lg overflow-hidden hover:scale-[1.02] transition-all duration-300">
               <Image className="w-full object-contain" loading="lazy" src={IMAGE_URL + item.file_path} />
               </div>
@@ -51,25 +51,25 @@ const MovieDetail = () => {
         </div>
       )}
       {creditsData?.cast?.length > 0 && (
-          <div className="mb-16">
-            <h2 className="text-2xl font-semibold mb-4 border-l-4 border-blue-500 pl-3">Актеры</h2>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
-              {creditsData.cast.slice(0, 15).map((person: ICastMember) => (
-                  <div key={person.id} className="bg-white dark:bg-[#1a1a1a] object-contain rounded-xl">
-                    <img src={IMAGE_URL + person.profile_path} onClick={()=> navigate(`/person/${person.id}`)} alt={person.original_name} loading="lazy" className="w-full h-48 object-cover"/>
-                    <div className="p-3 text-center">
-                      <h3 className="text-sm font-semibold">{person.original_name}</h3>
-                      <p className="text-xs text-gray-500 dark:text-gray-400">{person.character}</p>
-                    </div>
+        <div className="mb-16">
+          <h2 className="text-2xl font-semibold mb-4 border-l-4 border-blue-500 pl-3">Актеры</h2>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+            {creditsData.cast.filter((person: ICastMember) => person.profile_path).slice(0, 10).map((person: ICastMember) => (
+                <div key={person.id} className="bg-white dark:bg-[#1a1a1a] rounded-xl overflow-hidden shadow">
+                  <img src={IMAGE_URL + person.profile_path} onClick={() => navigate(`/person/${person.id}`)} alt={person.original_name} loading="lazy"  className="w-full h-48 object-cover cursor-pointer"/>
+                  <div className="p-3 text-center">
+                    <h3 className="text-sm font-semibold">{person.original_name}</h3>
+                    <p className="text-xs text-gray-500 dark:text-gray-400">{person.character}</p>
                   </div>
+                </div>
               ))}
-            </div>
           </div>
-        )}
+        </div>
+      )}
       {similarData?.results?.length > 0 && (
         <div className="mb-12">
           <h2 className="text-2xl font-semibold mb-4 border-l-4 border-green-500 pl-3">Похожие фильмы</h2>
-          <MovieView data={similarData.results.slice(0, 4)} />
+          <MovieView data={similarData?.results?.filter((movie: any) => movie.poster_path)?.slice(0, 4)} loading={isLoading} count={4}/>
         </div>
       )}
     </div>

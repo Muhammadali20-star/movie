@@ -33,22 +33,25 @@ const Header = () => {
         <img onClick={() => navigate("/")} src={photo} alt="logo" className="w-28" />
       </div>
       <div className="flex justify-center flex-wrap gap-6 sm:gap-8 text-sm">
-        <div className="flex flex-col items-center">
+        <NavLink to="/" className={({ isActive }) => `flex flex-col items-center ${isActive ? "text-[#C61F1F]" : "text-[#A1A1A1]"}`}>
           <HomeOutlined className="text-lg" />
-          <NavLink to="/">Home</NavLink>
-        </div>
-        <div className="flex flex-col items-center">
+          <span>Home</span>
+        </NavLink>
+
+        <NavLink to="/movies" className={({ isActive }) => `flex flex-col items-center ${isActive ? "text-[#C61F1F]" : "text-[#A1A1A1]"}`}>
           <VideoCameraOutlined className="text-lg" />
-          <NavLink to="/movies">Movies</NavLink>
-        </div>
-        <div className="flex flex-col items-center">
+          <span>Movies</span>
+        </NavLink>
+
+        <NavLink to="/saved" className={({ isActive }) => `flex flex-col items-center ${isActive ? "text-[#C61F1F]" : "text-[#A1A1A1]"}`}>
           <StarOutlined className="text-lg" />
-          <NavLink to="/saved">Saved</NavLink>
-        </div>
-        <div className="flex flex-col items-center">
+          <span>Saved</span>
+        </NavLink>
+
+        <NavLink to="/search" className={({ isActive }) => `flex flex-col items-center ${isActive ? "text-[#C61F1F]" : "text-[#A1A1A1]"}`}>
           <SearchOutlined className="text-lg" />
-          <NavLink to="/search">Search</NavLink>
-        </div>
+          <span>Search</span>
+        </NavLink>
       </div>
       <div className="flex justify-center sm:justify-end gap-4">
         <button onClick={handleTheme} className="text-xl bg-white dark:bg-slate-900 rounded-[14px] py-2 px-3">{isDark ? <SunOutlined /> : <MoonOutlined />}</button>

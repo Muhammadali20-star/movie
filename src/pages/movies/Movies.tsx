@@ -21,7 +21,7 @@ const Movies = () => {
   };
 
   const { data: genreData } = getGenres();
-  const { data } = getMovies({
+  const { data, isLoading } = getMovies({
     page,
     with_genres: genre,
     without_genres: "18,36,27,10749",
@@ -32,7 +32,7 @@ const Movies = () => {
   return (
     <div>
       <Genre data={genreData?.genres} />
-      <MovieView data={data?.results} />
+      <MovieView data={data?.results} loading={isLoading} count={20} />
       <div className="flex bg-white w-[400px] mx-auto justify-center items-center mt-8 mb-8">
         <Pagination
           current={page}
