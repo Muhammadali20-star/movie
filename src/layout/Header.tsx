@@ -1,13 +1,6 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import photo from '@/assets/main-logo.svg';
-import {
-  HomeOutlined,
-  MoonOutlined,
-  SearchOutlined,
-  StarOutlined,
-  SunOutlined,
-  VideoCameraOutlined,
-} from "@ant-design/icons";
+import { HomeOutlined, MoonOutlined, SearchOutlined, StarOutlined, SunOutlined, VideoCameraOutlined,} from "@ant-design/icons";
 import React, { useEffect, useState } from "react";
 
 const Header = () => {
@@ -37,17 +30,14 @@ const Header = () => {
           <HomeOutlined className="text-lg" />
           <span>Home</span>
         </NavLink>
-
         <NavLink to="/movies" className={({ isActive }) => `flex flex-col items-center ${isActive ? "text-[#C61F1F]" : "text-[#A1A1A1]"}`}>
           <VideoCameraOutlined className="text-lg" />
           <span>Movies</span>
         </NavLink>
-
         <NavLink to="/saved" className={({ isActive }) => `flex flex-col items-center ${isActive ? "text-[#C61F1F]" : "text-[#A1A1A1]"}`}>
           <StarOutlined className="text-lg" />
           <span>Saved</span>
         </NavLink>
-
         <NavLink to="/search" className={({ isActive }) => `flex flex-col items-center ${isActive ? "text-[#C61F1F]" : "text-[#A1A1A1]"}`}>
           <SearchOutlined className="text-lg" />
           <span>Search</span>

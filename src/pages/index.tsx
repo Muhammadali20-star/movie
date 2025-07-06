@@ -16,34 +16,13 @@ const MainRouter = () => {
       path: "/",
       element: <Layout />,
       children: [
-        {
-          path: "/",
-          element: <Home />,
-        },
-        {
-          path: "/movies",
-          element: <Movies />,
-        },
-        {
-          path: "/saved",
-          element: <Saved />,
-        },
-        {
-          path: "/search",
-          element: <Search />,
-        },
-        {
-          path: "/movie/:id",
-          element: <MoviesDetail />,
-        },
-        {
-          path: "/person/:id",
-          element: <PersonDetail />,
-        },
-        {
-          path: "/register",
-          element: <Register />,
-        }
+        { path: "/", element: <Home /> },
+        { path: "/movies", element: <Movies /> },
+        { path: "/saved", element: <Saved /> },
+        { path: "/search", element: <Search /> },
+        { path: "/movie/:id", element: <MoviesDetail /> },
+        { path: "/person/:id", element: <PersonDetail /> },
+        { path: "/register", element: <Register /> }
       ],
     },
   ]);
