@@ -1,0 +1,27 @@
+.custom-pagination .ant-pagination-item {
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+    font-weight: 500;
+}
+  
+.custom-pagination .ant-pagination-item:hover {
+    background: linear-gradient(to right, #f43f5e, #ec4899);
+    color: white;
+    border-color: transparent;
+}
+  
+.custom-pagination .ant-pagination-item-active {
+    background: linear-gradient(to right, #b91c1c, #dc2626);
+    border-color: transparent;
+    color: white;
+}
+  
+.custom-pagination .ant-pagination-item-active a {
+    color: white !important;
+}
+  
+.custom-pagination .ant-pagination-item a {
+    transition: color 0.2s;
+}
+  
