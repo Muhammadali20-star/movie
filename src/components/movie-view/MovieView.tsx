@@ -1,7 +1,9 @@
 import { IMAGE_URL } from "@/const";
 import type { IMovie } from "@/types";
+import { useStore } from "@/zustand/useStore";
 import React, { type FC } from "react";
 import { useNavigate } from "react-router-dom";
+import { FiBookmark } from "react-icons/fi"
 
 interface Props {
   data: IMovie[] | undefined;
@@ -10,6 +12,7 @@ interface Props {
 }
 
 const Skeleton: FC<{ count: number }> = ({ count }) => {
+  
   return (
     <>
       {Array(count).fill(0).map((_, idx) => (
@@ -27,6 +30,8 @@ const Skeleton: FC<{ count: number }> = ({ count }) => {
 
 const MovieView: FC<Props> = ({ data = [], loading, count }) => {
   const navigate = useNavigate();
+  const {toggleSaved}= useStore()
+  
 
   return (
     <div className="container mx-auto">
@@ -43,6 +48,7 @@ const MovieView: FC<Props> = ({ data = [], loading, count }) => {
               <div className="relative overflow-hidden">
                 <img loading="lazy" onClick={() => navigate(`/movie/${movie.id}`)}  src={IMAGE_URL + movie.poster_path} alt={movie.title} className="w-full h-[360px] object-cover"/>
                 <p className="absolute top-2 left-2 text-white bg-red-500 px-2 rounded text-sm">{movie?.release_date?.split("-")[0]}</p>
+                <button className="absolute top-2 right-2 bg-gray-500 text-white px-2 py-1 rounded text-2xl" onClick={()=> toggleSaved(movie)}><FiBookmark /></button>
               </div>
               <div className="p-4">
                 <h3 title={movie.title} className="text-lg font-semibold text-gray-900 dark:text-white">{movie.title}</h3>

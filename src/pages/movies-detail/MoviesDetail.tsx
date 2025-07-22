@@ -63,8 +63,8 @@ const MovieDetail = () => {
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
           {isLoading ? (
             Array.from({ length: 10 }).map((_, i) => (
-              <div>
-                <div key={i} className="rounded-xl h-48 bg-gray-200 dark:bg-slate-700" />
+              <div key={i}>
+                <div  className="rounded-xl h-48 bg-gray-200 dark:bg-slate-700" />
                 <div className="p-4 space-y-2">
                   <div className="h-5 w-10/12 bg-gray-200 dark:bg-slate-700 rounded"></div>
                   <div className="h-4 w-6/12 bg-gray-200 dark:bg-slate-700 rounded"></div>

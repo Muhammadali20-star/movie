@@ -4,13 +4,13 @@ import {
   HomeOutlined,
   MoonOutlined,
   SearchOutlined,
-  StarOutlined,
   SunOutlined,
   VideoCameraOutlined,
   MenuOutlined,
   CloseOutlined,
 } from "@ant-design/icons";
 import React, { useEffect, useState } from "react";
+import { FiBookmark } from "react-icons/fi"
 
 const Header = () => {
   const [isDark, setIsDark] = useState(false);
@@ -48,7 +48,7 @@ const Header = () => {
             <span>Movies</span>
           </NavLink>
           <NavLink to="/saved" className={({ isActive }) => `flex flex-col items-center ${isActive ? "text-[#C61F1F]" : "text-[#A1A1A1]"}`}>
-            <StarOutlined className="text-lg" />
+            <FiBookmark className="text-lg" />
             <span>Saved</span>
           </NavLink>
           <NavLink to="/search" className={({ isActive }) => `flex flex-col items-center ${isActive ? "text-[#C61F1F]" : "text-[#A1A1A1]"}`}>
@@ -83,7 +83,7 @@ const Header = () => {
           </NavLink>
           <NavLink to="/saved" onClick={() => setMenuOpen(false)} className={({ isActive }) =>`flex items-center gap-2 ${isActive ? "text-[#C61F1F]" : "text-[#A1A1A1]"}`
             }>
-            <StarOutlined />
+            <FiBookmark />
             <span>Saved</span>
           </NavLink>
           <NavLink to="/search" onClick={() => setMenuOpen(false)} className={({ isActive }) => `flex items-center gap-2 ${isActive ? "text-[#C61F1F]" : "text-[#A1A1A1]"}`}>
