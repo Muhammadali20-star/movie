@@ -1,20 +1,25 @@
 import { create } from 'zustand'
 
-
 type Store = {
-    saved: any[],
-    toggleSaved: (payload: any) => void
+  saved: any[],
+  toggleSaved: (payload: any) => void
 }
 
-export const useStore = create<Store>()((set)=> ({
-    saved: [],
+const initialSaved = JSON.parse(localStorage.getItem('saved-movies') || '[]')
 
-    toggleSaved: (payload: any) => set((state)=>{
-        const Exist = state.saved.some(item => item.id === payload.id)
-        if(Exist){
-            return {saved: state.saved.filter(item => item.id !== payload.id)}
-        } else {
-            return {saved: [...state.saved, payload]}
-        }
+export const useStore = create<Store>((set) => ({
+  saved: initialSaved,
+
+  toggleSaved: (payload: any) =>
+    set((state) => {
+      const exist = state.saved.some(item => item.id === payload.id)
+      let updated
+      if (exist) {
+        updated = state.saved.filter(item => item.id !== payload.id)
+      } else {
+        updated = [...state.saved, payload]
+      }
+      localStorage.setItem('saved-movies', JSON.stringify(updated))
+      return { saved: updated }
     })
 }))

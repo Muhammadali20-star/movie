@@ -6,8 +6,10 @@ import { useGenre } from "@/api/hooks/useGenre";
 import Genre from "@/components/genre/Genre";
 import { useParamsHook } from "@/hooks/useParamsHook";
 import "./style.css"
+import { useNavigate } from "react-router-dom";
 
 const Movies = () => {
+  const navigate = useNavigate()
   const { getMovies } = useMovie();
   const { getGenres } = useGenre();
   const { getParam, setParam } = useParamsHook();
@@ -30,6 +32,15 @@ const Movies = () => {
   return (
     <div className="container mx-auto px-4">
       <Genre data={genreData?.genres} />
+      <div className="flex justify-between items-center mt-5">
+        <h2 className="text-xl text-[#000000] font-medium leading-6 dark:text-white">На неделе</h2>
+        <h2
+          className="text-sm text-red-500 font-medium leading-5 cursor-pointer"
+          onClick={() => navigate("/movies")}
+        >
+          Показать все
+        </h2>
+      </div>
       <MovieView data={data?.results} loading={isLoading} count={20} />
       <div className="mt-14 mb-16 flex justify-center">
         <div className="w-full max-w-[480px] rounded-[14px] bg-gradient-to-br from-white via-gray-50 to-gray-100 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 border dark:border-slate-700 border-gray-200  p-3">

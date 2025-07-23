@@ -8,9 +8,12 @@ const Savet = () => {
   const { saved } = useStore()
 
   return (
-    <div>
+    <div className='container'>
       {saved.length > 0 ? (
-        <MovieView data={saved} count={saved.length}/>
+       <div>
+         <h2 className='text-3xl text-[#FFFFFF] font-semibold '>Saved</h2>
+         <MovieView data={saved} count={saved.length}/>
+       </div>
       ) : (
         <div className="min-h-[60vh] flex flex-col items-center justify-center text-center gap-4">
           <h2 className="text-xl text-[#4D4D4D] font-medium">В избранном пока пусто</h2>
